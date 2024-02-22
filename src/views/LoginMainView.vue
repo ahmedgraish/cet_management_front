@@ -3,23 +3,61 @@
   import submitBtn from '../components/SubmitBtn.vue'
   import { ref } from 'vue'
   import {useUserStore} from '../stores/UserStore'
+import router from '@/router';
   const welcomeMsg = ref('مرحبًا بك   في نظام الحضور والغياب ');
   
   const password = ref('');
   const ref_number = ref('');
-  
+  const role = ref('');
+  const hint = ref(false);
   const user = useUserStore();
 
-  const login =async()=>{
+  const login = async ()=>{
 
     const loginData={
     ref_number:ref_number.value,
     password:password.value,
     }
 
-    await user.login(loginData,document.URL);
 
-    console.log(user.userData);
+    if ((document.URL).includes('admin')) {
+      role.value = 'admin'
+      
+    }else if ((document.URL).includes('teacher')){
+      role.value ='teacher'
+
+    }else{
+      role.value = 'student'
+
+    }
+
+    try {
+      await user.login(loginData,role.value);      
+      console.log("dds"+user.userAuth);
+    } catch (error) {
+      console.log(error);
+      error=401 ? hint.value =true:hint.value =false
+    }
+
+
+    if (user.userAuth) {
+
+        switch (user.userRole) {
+          case 'student':
+            router.push('home')
+            break;
+          case 'teacher':
+            router.push('/teacher/home')
+            break;
+          case 'admin':
+            router.push('/admin/home')
+            break;
+
+          default:
+            break;
+        }
+    }
+    
   }
   
 
@@ -40,6 +78,7 @@
 
       <form @submit.prevent="login">
         <input type="text" v-model="ref_number" class="LoginDetails" placeholder="اسم المستخدم" dir="rtl" required>
+        <small v-if="hint">بيانات الدخول غير صحيحة</small>
         <input type="password" v-model="password" class="LoginDetails" placeholder="كلمة المرور" dir="rtl" required>
         <submitBtn value="تسجيل الدخول" id="submitBtn"></submitBtn>
       </form>
@@ -69,6 +108,7 @@ main{
     border-radius: 35px 0px 0px 35px;
     form{
       display: flex;
+      position: relative;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
@@ -77,7 +117,12 @@ main{
       margin-top: 15%;
     }
 }
-
+small{
+  align-self: self-end;
+  color: crimson;
+  position: absolute;
+  top:32%;
+}
 h1{
   position: absolute;
   top: 10%;
