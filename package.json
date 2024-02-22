@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "axios": "^1.6.7",
     "pinia": "^2.1.7",
     "swr": "^2.2.5",

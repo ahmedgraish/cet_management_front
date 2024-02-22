@@ -1,4 +1,22 @@
+<script setup>
+import sideBar from '../components/SideBar.vue';
+
+</script>
+
 
 <template>
-<h1>I'm a student</h1>
+
+    <div class="navContainer">
+       <sideBar user="student" />
+    </div>
+
 </template>
+
+<style>
+
+    .navContainer{
+        display: flex;
+        justify-content: end;
+    }
+   
+</style>
