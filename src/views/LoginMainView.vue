@@ -2,18 +2,24 @@
   
   import submitBtn from '../components/SubmitBtn.vue'
   import { ref } from 'vue'
-  import CetApi from '../Repository/CetApi'
+  import {useUserStore} from '../stores/UserStore'
   const welcomeMsg = ref('مرحبًا بك   في نظام الحضور والغياب ');
   
   const password = ref('');
   const ref_number = ref('');
   
-  
-  const login = async () => {
-    
-    const response = await CetApi.userLogin({ref_number:ref_number.value,password:password.value},document.URL);
+  const user = useUserStore();
 
-    console.log(response.data);
+  const login =async()=>{
+
+    const loginData={
+    ref_number:ref_number.value,
+    password:password.value,
+    }
+
+    await user.login(loginData,document.URL);
+
+    console.log(user.userData);
   }
   
 

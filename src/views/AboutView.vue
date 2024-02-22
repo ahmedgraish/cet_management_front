@@ -1,6 +1,15 @@
+<script setup>
+  import {onMounted} from 'vue'
+  import {useUserStore} from '../stores/UserStore'
+  const user = useUserStore();
+
+
+
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>{{ user.userData }}</h1>
   </div>
 </template>
 
