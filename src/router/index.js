@@ -28,12 +28,20 @@ const router = createRouter({
       component: () => import('../views/StudentHome.vue')
     },
     {
-      path: '/home/absenceRatio',
+      path: '/absenceRatio',
       name: 'absenceRatio',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/StudentAbsenceRatio.vue')
+    },
+    {
+      path: '/grades',
+      name: 'grades',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/StudentGrade.vue')
     },
     {
       path: '/teacher/home',

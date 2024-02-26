@@ -1,7 +1,6 @@
 <script setup>
 import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
-import headercom from "@/components/header.vue";
 import { onMounted, ref } from "vue";
 
 const user = useUserStore();

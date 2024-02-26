@@ -13,8 +13,8 @@ import router from "@/router";
 
 const studentNav = [
   { name: 1, icon: scheduleIcon, route: "/home" },
-  { name: 2, icon: percentageIcon, route: "/home/absenceRatio" },
-  { name: 3, icon: marksIcon, route: "" },
+  { name: 2, icon: percentageIcon, route: "/absenceRatio" },
+  { name: 3, icon: marksIcon, route: "/grades" },
   { name: 4, icon: settingsIcon, route: "" },
 ];
 const url = ref(document.URL);

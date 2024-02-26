@@ -13,13 +13,21 @@ import router from "@/router";
 
 const studentNav = [
   { name: 2, icon: scheduleIcon, route: "/home" },
-  { name: 1, icon: percentageIcon, route: "/absenceRatio" },
-  { name: 3, icon: marksIcon, route: "/grades" },
+  { name: 3, icon: percentageIcon, route: "/absenceRatio" },
+  { name: 1, icon: marksIcon, route: "/grades" },
   { name: 4, icon: settingsIcon, route: "" },
 ];
 
 const student = useStudentStore();
 const user = useUserStore();
+async function test() {
+  try {
+    await student.getGrades(user.Data.id);
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(student.grades);
+}
 
 onMounted(() => {});
 </script>
@@ -27,11 +35,9 @@ onMounted(() => {});
 <template>
   <div class="mainContainer">
     <div class="body">
-      <headercom />
+      <headercom @click="test" />
 
-      <main>
-        <AbsenceRatioBunner />
-      </main>
+      <main></main>
     </div>
 
     <div class="navContainer">

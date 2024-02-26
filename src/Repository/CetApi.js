@@ -36,6 +36,13 @@ export default {
         .then((res)=>{
             return res
         })
+    },
+
+    studentGrades(id){
+        return Api().get('/student/grades/'+id)
+        .then((res)=>{
+            return res
+        })
     }
  
 }
