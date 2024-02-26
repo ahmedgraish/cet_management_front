@@ -11,7 +11,7 @@ defineProps(['value','fun'])
 
 </template>
 
-<style>
+<style scoped>
 #submitBtn{
   /* height: 25%;
   width: 60%; */

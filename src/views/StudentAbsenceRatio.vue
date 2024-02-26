@@ -12,12 +12,11 @@ import { onMounted, ref } from "vue";
 import router from "@/router";
 
 const studentNav = [
-  { name: 1, icon: scheduleIcon, route: "/home" },
-  { name: 2, icon: percentageIcon, route: "/home/absenceRatio" },
+  { name: 2, icon: scheduleIcon, route: "/home" },
+  { name: 1, icon: percentageIcon, route: "/home/absenceRatio" },
   { name: 3, icon: marksIcon, route: "" },
   { name: 4, icon: settingsIcon, route: "" },
 ];
-const url = ref(document.URL);
 onMounted(() => {});
 </script>
 
@@ -26,13 +25,11 @@ onMounted(() => {});
     <div class="body">
       <headercom />
 
-      <main>
-        <schedule v-if="url.includes('/home')" />
-      </main>
+      <main>hello</main>
     </div>
 
     <div class="navContainer">
-      <sideBar :Items="studentNav" :staer="1" />
+      <sideBar :Items="studentNav" />
     </div>
   </div>
 </template>

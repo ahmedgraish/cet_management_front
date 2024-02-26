@@ -4,8 +4,10 @@ import CetApi from '../Repository/CetApi'
 
 export const useUserStore = defineStore('UserStore',{
     state:()=>{
-        userData:null
-        userRole:''
+        Data:{
+            name:'احمد'
+        }
+        Role:''
         isLoading:false
         userAuth:false
     },
@@ -16,8 +18,8 @@ export const useUserStore = defineStore('UserStore',{
 
                 this.isLoading = true;
                 const response = await CetApi.userLogin(data , role);
-                this.userData = response.data;
-                this.userRole = role
+                this.Data = response.data;
+                this.Role = role
 
                 if (response.status == 200) {
                     this.userAuth = true

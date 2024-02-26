@@ -23,5 +23,19 @@ export default {
             })
         }
     },
+
+    studentSchedule(id){
+        return Api().get('/student/Schedules/'+id)
+        .then((res)=>{
+            return res
+        })
+    },
+
+    absenseRatio(id){
+        return Api().get('student/absence/'+id)
+        .then((res)=>{
+            return res
+        })
+    }
  
 }

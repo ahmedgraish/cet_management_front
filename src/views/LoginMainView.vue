@@ -3,7 +3,8 @@
   import submitBtn from '../components/SubmitBtn.vue'
   import { ref } from 'vue'
   import {useUserStore} from '../stores/UserStore'
-import router from '@/router';
+  import router from '@/router';
+  import { parse } from '@fortawesome/fontawesome-svg-core';
   const welcomeMsg = ref('مرحبًا بك   في نظام الحضور والغياب ');
   
   const password = ref('');
@@ -33,7 +34,6 @@ import router from '@/router';
 
     try {
       await user.login(loginData,role.value);      
-      console.log("dds"+user.userAuth);
     } catch (error) {
       console.log(error);
       error=401 ? hint.value =true:hint.value =false
@@ -42,7 +42,7 @@ import router from '@/router';
 
     if (user.userAuth) {
 
-        switch (user.userRole) {
+        switch (user.Role) {
           case 'student':
             router.push('home')
             break;
@@ -89,7 +89,7 @@ import router from '@/router';
  
 </template>
 
-<style>
+<style scoped>
 
 .mainCont{
   display: flex;
