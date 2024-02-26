@@ -30,7 +30,7 @@ onMounted(() => {});
       <headercom />
 
       <main>
-        <AbsenceRatioBunner />
+        <AbsenceRatioBunner :studentId="user.Data.id" />
       </main>
     </div>
 

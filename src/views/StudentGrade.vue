@@ -7,9 +7,8 @@ import settingsIcon from "../components/icons/IconSittings.vue";
 import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import headercom from "@/components/header.vue";
-import AbsenceRatioBunner from "@/components/AbsenceRatioBunner.vue";
+import gradesBunner from "@/components/gradesBunner.vue";
 import { onMounted, ref } from "vue";
-import router from "@/router";
 
 const studentNav = [
   { name: 2, icon: scheduleIcon, route: "/home" },
@@ -18,16 +17,7 @@ const studentNav = [
   { name: 4, icon: settingsIcon, route: "" },
 ];
 
-const student = useStudentStore();
 const user = useUserStore();
-async function test() {
-  try {
-    await student.getGrades(user.Data.id);
-  } catch (error) {
-    console.log(error);
-  }
-  console.log(student.grades);
-}
 
 onMounted(() => {});
 </script>
@@ -37,7 +27,9 @@ onMounted(() => {});
     <div class="body">
       <headercom @click="test" />
 
-      <main></main>
+      <main>
+        <gradesBunner :studentId="user.Data.id" />
+      </main>
     </div>
 
     <div class="navContainer">

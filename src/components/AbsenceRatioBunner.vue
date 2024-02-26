@@ -5,9 +5,15 @@ import { onMounted, ref } from "vue";
 
 const student = useStudentStore();
 const user = useUserStore();
+
+const props = defineProps({
+  studentId: Number,
+  required: true,
+});
+
 async function drawRatio() {
   try {
-    await student.getAbsenceRatio(user.Data.id);
+    await student.getAbsenceRatio(props.studentId);
   } catch (error) {
     console.log(error);
   }
