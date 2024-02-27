@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-export default (url = 'http://127.0.0.1:8000/api/')=>{
+console.log('url : ', import.meta.env)
+export default () => {
 
-    return axios.create({
-        baseURL: url,
-    })
+  return axios.create({
+    baseURL: import.meta.env.VITE_URL_API,
+  })
 
 }
