@@ -1,19 +1,18 @@
 <script setup>
-import { useUserStore } from '@/stores/UserStore';
-import arrowDownIcon from '../components/icons/IconArrowDown.vue'
+import { useUserStore } from "@/stores/UserStore";
+import arrowDownIcon from "../components/icons/IconArrowDown.vue";
 
 const user = useUserStore();
-
 </script>
 
 <template>
-    <div class="userBunner">
-          <div class="userName">{{ user.Data.name }}</div>
-          <div class="userPicture"></div>
-          <div class="more">
-          <arrowDownIcon/>
-          </div>
+  <div class="userBunner">
+    <div class="userName">{{ user.Data.name }}</div>
+    <div class="userPicture"></div>
+    <div class="more">
+      <arrowDownIcon />
     </div>
+  </div>
 </template>
 
 <style>
@@ -29,11 +28,10 @@ const user = useUserStore();
   border: 1px solid var(--vt-c-white-mute);
   user-select: none;
 }
-.userBunner:hover{
-    transition: all 0.5s ease;
-    background-color: var(--vt-c-white-soft);
-    cursor: pointer;
-
+.userBunner:hover {
+  transition: all 0.5s ease;
+  background-color: var(--vt-c-white-soft);
+  cursor: pointer;
 }
 .userPicture {
   height: 80%;

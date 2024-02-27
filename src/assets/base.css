@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 
 :root {
+  --mainColor: #4494d0;
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;

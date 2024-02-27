@@ -4,9 +4,7 @@ import CetApi from '../Repository/CetApi'
 
 export const useUserStore = defineStore('UserStore',{
     state:()=>{
-        Data:{
-            name:'احمد'
-        }
+        Data:null
         Role:''
         isLoading:false
         userAuth:false

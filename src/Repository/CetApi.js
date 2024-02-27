@@ -43,6 +43,12 @@ export default {
         .then((res)=>{
             return res
         })
+    },
+    teacherLectures(id){
+        return Api().get('/teacher/lectures/'+id)
+        .then((res)=>{
+            return res
+        })
     }
  
 }

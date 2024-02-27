@@ -46,9 +46,8 @@ const activeNav = ref(1);
 </template>
 
 <style>
-:root {
-  --mainColor: #4494d0;
-}
+/* :root {
+} */
 
 nav {
   display: flex;
