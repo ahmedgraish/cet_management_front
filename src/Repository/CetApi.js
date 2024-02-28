@@ -21,34 +21,34 @@ export default {
         .then((res) => {
           return res
         })
-    },
-    teacherLectures(id){
-        return Api().get('/teacher/lectures/'+id)
-        .then((res)=>{
-            return res
-        })
     }
   },
 
   studentSchedule(id) {
-    return Api().get('/student/Schedules/' + id)
+    return Api().get('/api/student/Schedules/' + id)
       .then((res) => {
         return res
       })
   },
 
   absenseRatio(id) {
-    return Api().get('student/absence/' + id)
+    return Api().get('/api/student/absence/' + id)
       .then((res) => {
         return res
       })
   },
 
   studentGrades(id) {
-    return Api().get('/student/grades/' + id)
+    return Api().get('/api/student/grades/' + id)
       .then((res) => {
         return res
       })
-  }
+  },
+  teacherLectures(id){
+    return Api().get('/api/teacher/lectures/'+id)
+    .then((res)=>{
+        return res
+    })
+  },
 
 }

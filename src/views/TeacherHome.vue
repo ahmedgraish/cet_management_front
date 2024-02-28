@@ -16,21 +16,27 @@ const studentNav = [
 
 const user = useUserStore();
 
+function handleClickedLecture(data) {
+  console.log("from child" + data);
+}
 onMounted(() => {});
 </script>
 
 <template>
   <div class="mainContainer">
     <div class="body">
-      <headercom @click="test" />
+      <headercom />
 
       <main>
-        <LectureCard :teacherId="user.Data.id" />
+        <LectureCard
+          :teacherId="user.Data.id"
+          @clickedLecture="(n) => handleClickedLecture(n)"
+        />
       </main>
     </div>
 
     <div class="navContainer">
-      <sideBar :Items="studentNav" :staer="1" />
+      <sideBar :Items="studentNav" :startOn="1" />
     </div>
   </div>
 </template>

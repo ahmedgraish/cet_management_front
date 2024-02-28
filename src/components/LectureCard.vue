@@ -35,11 +35,6 @@ function daysName(num) {
   }
 }
 const teacher = useTeacherStore();
-const user = useUserStore();
-
-function clickedLecture(id) {
-  console.log(id);
-}
 
 async function drawLectures() {
   try {
@@ -60,7 +55,7 @@ onMounted(() => {
     class="lecture"
     v-for="lecture in teacher.lectures"
     :style="{ '--delay': lecture.id }"
-    @click="clickedLecture(lecture.id)"
+    @click="$emit('clickedLecture', lecture.id)"
   >
     <h2 class="subjectName">{{ lecture.name }}</h2>
     <div class="studentCount">
