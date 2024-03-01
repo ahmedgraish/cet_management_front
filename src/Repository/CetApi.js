@@ -50,5 +50,11 @@ export default {
         return res
     })
   },
+  lectureStudents(id){
+    return Api().get('/api/teacher/lectureStudents/'+id)
+    .then((res)=>{
+      return res
+    })
+  },
 
 }
