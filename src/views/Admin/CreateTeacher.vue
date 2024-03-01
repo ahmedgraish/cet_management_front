@@ -4,7 +4,7 @@
     <div
       class="flex flex-col items-center gap-4 justify-center p-4 md:p-5 rounded-t"
     >
-      <h3 class="text-3xl font-semibold text-gray-900">إنشاء حساب طالب</h3>
+      <h3 class="text-3xl font-semibold text-gray-900">إنشاء حساب استاذ</h3>
     </div>
     <!-- Modal body -->
     <div class="p-4 md:p-5">
