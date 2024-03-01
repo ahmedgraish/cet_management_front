@@ -1,14 +1,13 @@
-import { defineStore } from "pinia"
-import CetApi from '../Repository/CetApi'
-import AdminRepository from '../Repository/admin'
+import { defineStore } from "pinia";
+import CetApi from "../Repository/CetApi";
+import AdminRepository from "../Repository/admin";
 
-
-export const useAdminStore = defineStore('AdminStore', {
+export const useAdminStore = defineStore("AdminStore", {
   state: () => {
-    schedule: null
-    absenceRatio: null
-    grades: null
-    isLoading: false
+    schedule: null;
+    absenceRatio: null;
+    grades: null;
+    isLoading: false;
   },
   actions: {
     /*
@@ -24,24 +23,35 @@ export const useAdminStore = defineStore('AdminStore', {
     */
     async createStudent(data) {
       try {
-        this.isLoading = true
-        const response = await AdminRepository.createStudent(data)
-        this.student = response.data
+        this.isLoading = true;
+        const response = await AdminRepository.createStudent(data);
+        this.student = response.data;
       } catch (error) {
-        throw error
+        throw error;
       } finally {
-        this.isLoading = false
+        this.isLoading = false;
+      }
+    },
+    async createTeacher(data) {
+      try {
+        this.isLoading = true;
+        const response = await AdminRepository.createTeacher(data);
+        return response.data;
+      } catch (error) {
+        throw error;
+      } finally {
+        this.isLoading = false;
       }
     },
     async getSchedule(id) {
       try {
-        this.isLoading = true
-        const response = await CetApi.studentSchedule(id)
-        this.schedule = response.data
+        this.isLoading = true;
+        const response = await CetApi.studentSchedule(id);
+        this.schedule = response.data;
       } catch (error) {
-        throw error
+        throw error;
       } finally {
-        this.isLoading = false
+        this.isLoading = false;
       }
     },
     async getAbsenceRatio(id) {
@@ -67,5 +77,4 @@ export const useAdminStore = defineStore('AdminStore', {
       }
     },
   },
-
-})
+});
