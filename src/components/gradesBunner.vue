@@ -64,7 +64,7 @@ onMounted(() => {
   height: 30vh;
   min-width: 25vw;
   border-radius: 10px;
-  padding-bottom: 1%;
+  padding-bottom: 2%;
   margin: 2%;
   transform: translateY(30%);
   opacity: 0;

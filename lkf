@@ -1,0 +1,78 @@
+[33mcommit 130fea858b8f19f424c9cb16517dcff328fc6d6f[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Fri Mar 1 16:21:22 2024 +0200
+
+    add the student attendece form
+
+[33mcommit e9b6041bceaa896ee5028b22bab0908592b3824c[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Wed Feb 28 12:10:18 2024 +0200
+
+    -_*
+
+[33mcommit a83ce53a186792b07a3ef28cdf2c38468a442916[m
+Merge: 975fe23 cb18f73
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Tue Feb 27 18:15:06 2024 +0200
+
+    Merge branch 'main' of https://github.com/ahmedgraish/cet_management_front
+
+[33mcommit 975fe23e1454210f0cb0a0a63cab93551ab0b2c1[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Tue Feb 27 18:14:58 2024 +0200
+
+    add teaher lectures card
+
+[33mcommit cb18f737f46e57c8db41bc88abf0a3c94fca63a0[m
+Author: moaoa <moaadbn3@gmail.com>
+Date:   Tue Feb 27 00:29:27 2024 +0200
+
+    env vars
+
+[33mcommit d4988ba146e49091d43d10741a9d79cd293ed86b[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Mon Feb 26 19:56:40 2024 +0200
+
+    finshed student grades page and modified some of the prev components
+
+[33mcommit cac1cb4d59b687c1edb5fcea2a76a73c499e2bcb[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Mon Feb 26 17:48:33 2024 +0200
+
+    finshed the absence ratio page
+
+[33mcommit 59b459bb563e197ceea5157692092c43163e1418[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Mon Feb 26 09:22:22 2024 +0200
+
+    finished the home screen for the student
+
+[33mcommit 2e6723cf9ed7d24d15be5f20d8605ac1abf077e3[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Fri Feb 23 01:13:17 2024 +0200
+
+    create sideBar
+
+[33mcommit 643d3d598c10a79eac732356b624c8f6d7991b64[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Thu Feb 22 18:00:34 2024 +0200
+
+    add the login mechanism for multiple users
+
+[33mcommit a2096e376eabfe2e162af63c7be15cf4d9b5d94f[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Thu Feb 22 10:12:48 2024 +0200
+
+    configred Api and state Management  files
+
+[33mcommit 042d575e84d5d58873513a7047ddea5656632fa0[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Mon Feb 19 16:52:59 2024 +0200
+
+    draft
+
+[33mcommit 30a772fa45e19059c4160d899113c76821625753[m
+Author: Ahmed graish <graish333@gmail.com>
+Date:   Mon Feb 19 16:52:34 2024 +0200
+
+    draft

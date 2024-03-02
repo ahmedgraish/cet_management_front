@@ -56,5 +56,11 @@ export default {
       return res
     })
   },
+  attendenceSubmition(data){
+    return Api().post('/api/teacher/attendence',data)
+    .then((res)=>{
+      return res
+    })
+  },
 
 }

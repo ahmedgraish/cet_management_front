@@ -3,9 +3,9 @@ import submitBtn from "../components/SubmitBtn.vue";
 import { ref } from "vue";
 import { useUserStore } from "../stores/UserStore";
 import router from "@/router";
-import { parse } from "@fortawesome/fontawesome-svg-core";
-const welcomeMsg = ref("مرحبًا بك   في نظام الحضور والغياب ");
+import loading from "@/components/LoadingScreen.vue";
 
+const welcomeMsg = ref("مرحبًا بك   في نظام الحضور والغياب ");
 const password = ref("");
 const ref_number = ref("");
 const role = ref("");
@@ -55,6 +55,7 @@ const login = async () => {
 
 <template>
   <div class="mainCont">
+    <loading v-if="user.isLoading" />
     <div class="side_part">
       <div class="logo"></div>
 
@@ -63,7 +64,6 @@ const login = async () => {
 
     <main>
       <h1>{{ welcomeMsg }}</h1>
-
       <form @submit.prevent="login">
         <input
           type="text"
@@ -91,8 +91,9 @@ const login = async () => {
 <style scoped>
 .mainCont {
   display: flex;
+  position: relative;
+  overflow: hidden;
 }
-
 main {
   display: flex;
   flex-direction: column;
@@ -177,7 +178,7 @@ h1 {
   top: 13%;
   left: 22%;
   scale: 0.95;
-  z-index: 1000;
+  z-index: 100;
   background-image: url(../assets/images/login_main_img.png);
   background-size: cover;
 }
