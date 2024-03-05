@@ -2,9 +2,9 @@ import {defineStore} from "pinia"
 import CetApi from '../Repository/CetApi'
 
 
-export const useLectureStore= defineStore('LectureStore',{
+export const useSubjectStore= defineStore('SubjectStore',{
     state:()=>{
-        lecture_id:null
+        subject_id:null
         students:null
         isLoading:false
         submitionStatus:null
@@ -13,18 +13,18 @@ export const useLectureStore= defineStore('LectureStore',{
        async getStudents(id){
         try {
             this.isLoading =true;
-            const response = await CetApi.lectureStudents(id);
+            const response = await CetApi.subjectStudents(id);
             this.students = response.data;
-            this.lecture_id = id;
+            this.subject_id = id;
         } catch (error) {
             throw error
         }finally{
             this.isLoading =false
         }
        },
-       async submitAttendence(data){
+       async submitGrades(data){
         try {
-            const response = await CetApi.attendenceSubmition(data);
+            const response = await CetApi.gradesSubmition(data);
             this.submitionStatus =response.data;
         } catch (error) {
             throw error
@@ -33,4 +33,5 @@ export const useLectureStore= defineStore('LectureStore',{
       
     },
     persist: true,
+
 })

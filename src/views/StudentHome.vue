@@ -17,7 +17,7 @@ const studentNav = [
   { name: 3, icon: marksIcon, route: "/grades" },
   { name: 4, icon: settingsIcon, route: "" },
 ];
-const url = ref(document.URL);
+
 onMounted(() => {});
 </script>
 
@@ -27,7 +27,7 @@ onMounted(() => {});
       <headercom />
 
       <main>
-        <schedule v-if="url.includes('/home')" />
+        <schedule />
       </main>
     </div>
 

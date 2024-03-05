@@ -10,6 +10,7 @@ const lecture = useLectureStore();
 const attendentStudents = ref([]);
 const absentStudents = ref([]);
 const permissionedStuents = ref([]);
+const hint = ref(false);
 const submitionData = {
   lecture_id: null,
   student_id: null,
@@ -25,7 +26,15 @@ async function attendent(student_id) {
   submitionData.lecture_id = lecture.lecture_id;
   submitionData.student_id = student_id;
   submitionData.status = 1;
-  await lecture.submitAttendence(submitionData);
+  try {
+    await lecture.submitAttendence(submitionData);
+  } catch (error) {
+    console.log(error.response);
+  }
+  hint.value = true;
+  setTimeout(() => {
+    hint.value = false;
+  }, 5000);
   console.log(lecture.submitionStatus);
 }
 
@@ -37,7 +46,14 @@ async function absence(student_id) {
   submitionData.lecture_id = lecture.lecture_id;
   submitionData.student_id = student_id;
   submitionData.status = 0;
-  await lecture.submitAttendence(submitionData);
+  try {
+    await lecture.submitAttendence(submitionData);
+  } catch (error) {}
+
+  hint.value = true;
+  setTimeout(() => {
+    hint.value = false;
+  }, 5000);
   console.log(lecture.submitionStatus);
 }
 
@@ -49,7 +65,14 @@ async function permissioned(student_id) {
   submitionData.lecture_id = lecture.lecture_id;
   submitionData.student_id = student_id;
   submitionData.status = 2;
-  await lecture.submitAttendence(submitionData);
+  try {
+    await lecture.submitAttendence(submitionData);
+  } catch (error) {}
+
+  hint.value = true;
+  setTimeout(() => {
+    hint.value = false;
+  }, 5000);
   console.log(lecture.submitionStatus);
 }
 
@@ -112,6 +135,13 @@ computed(() => {});
       </div>
     </div>
   </div>
+  <div
+    v-if="hint"
+    class="validationHint"
+    :class="{ succesHint: lecture.submitionStatus.includes('بالفعل') }"
+  >
+    <small v-if="hint" id="hint">{{ lecture.submitionStatus }}</small>
+  </div>
 </template>
 
 <style scoped>
@@ -165,5 +195,36 @@ computed(() => {});
   justify-content: center;
   gap: 10%;
   width: 20%;
+}
+.validationHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 10vh;
+  width: 35vw;
+  border-radius: 30px;
+  background-color: rgba(0, 128, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 35%;
+  transition: all 1s ease;
+  animation: popUp 1s ease forwards;
+}
+.succesHint {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+@keyframes popUp {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translateY(70%);
+  }
+}
+#hint {
+  color: white;
+  font-size: medium;
+  font-family: "El Messiri", sans-serif;
 }
 </style>

@@ -3,27 +3,18 @@ import sideBar from "../components/SideBar.vue";
 import scheduleIcon from "../components/icons/IconSchedule.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import LectureCard from "@/components/LectureCard.vue";
+import SubjectCard from "@/components/SubjectCard.vue";
 import headercom from "@/components/header.vue";
 import { useUserStore } from "../stores/UserStore";
-import { useLectureStore } from "@/stores/LectureStore";
+import { useSubjectStore } from "@/stores/SubjectStore";
 import { onMounted, ref } from "vue";
-import router from "@/router";
+import gradesForm from "@/components/gradesForm.vue";
 
 const studentNav = [
-  { name: 1, icon: scheduleIcon, route: "/teacher/home" },
-  { name: 2, icon: marksIcon, route: "/teacher/subjects" },
+  { name: 2, icon: scheduleIcon, route: "/teacher/home" },
+  { name: 1, icon: marksIcon, route: "/teacher/subjects" },
   { name: 3, icon: settingsIcon, route: "" },
 ];
-
-const user = useUserStore();
-const lecture = useLectureStore();
-
-async function handleClickedLecture(data) {
-  await lecture.getStudents(data);
-  router.push("/teacher/attendence");
-}
-
 onMounted(() => {});
 </script>
 
@@ -32,10 +23,7 @@ onMounted(() => {});
     <div class="body">
       <headercom />
       <main>
-        <LectureCard
-          :teacherId="user.Data.id"
-          @clickedLecture="(n) => handleClickedLecture(n)"
-        />
+        <gradesForm />
       </main>
     </div>
 
@@ -64,8 +52,6 @@ onMounted(() => {});
 }
 main {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: end;
   width: 100%;
   height: 85%;

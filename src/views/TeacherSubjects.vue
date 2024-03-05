@@ -3,25 +3,26 @@ import sideBar from "../components/SideBar.vue";
 import scheduleIcon from "../components/icons/IconSchedule.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import LectureCard from "@/components/LectureCard.vue";
+import SubjectCard from "@/components/SubjectCard.vue";
 import headercom from "@/components/header.vue";
 import { useUserStore } from "../stores/UserStore";
-import { useLectureStore } from "@/stores/LectureStore";
-import { onMounted, ref } from "vue";
+import { useSubjectStore } from "@/stores/SubjectStore";
 import router from "@/router";
+import { onMounted, ref } from "vue";
 
 const studentNav = [
-  { name: 1, icon: scheduleIcon, route: "/teacher/home" },
-  { name: 2, icon: marksIcon, route: "/teacher/subjects" },
+  { name: 2, icon: scheduleIcon, route: "/teacher/home" },
+  { name: 1, icon: marksIcon, route: "/teacher/subjects" },
   { name: 3, icon: settingsIcon, route: "" },
 ];
 
 const user = useUserStore();
-const lecture = useLectureStore();
+const subject = useSubjectStore();
 
-async function handleClickedLecture(data) {
-  await lecture.getStudents(data);
-  router.push("/teacher/attendence");
+async function handleClickedSubject(id) {
+  await subject.getStudents(id);
+  console.log(id);
+  router.push("/teacher/grades");
 }
 
 onMounted(() => {});
@@ -32,9 +33,9 @@ onMounted(() => {});
     <div class="body">
       <headercom />
       <main>
-        <LectureCard
+        <SubjectCard
           :teacherId="user.Data.id"
-          @clickedLecture="(n) => handleClickedLecture(n)"
+          @clickedSubject="(n) => handleClickedSubject(n)"
         />
       </main>
     </div>

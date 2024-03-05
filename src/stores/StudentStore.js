@@ -44,5 +44,6 @@ export const useStudentStore = defineStore('StudentStore',{
            }
        },
     },
+    persist: true,
 
 })

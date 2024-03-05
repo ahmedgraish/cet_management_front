@@ -62,5 +62,23 @@ export default {
       return res
     })
   },
+  teacherSubjects(id){
+    return Api().get('/api/teacher/teacherSubjects/'+id)
+    .then((res)=>{
+        return res
+    })
+  },
+  subjectStudents(id){
+    return Api().get('/api/teacher/subjectStudents/'+id)
+    .then((res)=>{
+      return res
+    })
+  },
+  gradesSubmition(data){
+    return Api().post('/api/teacher/addingStudentGrades',data)
+    .then((res)=>{
+      return res
+    })
+  },
 
 }

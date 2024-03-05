@@ -67,13 +67,13 @@ onMounted(() => {
           :class="{
             IndicatorGood:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.id == lecture.subject_id)
+                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
               ].ratio < 5
                 ? true
                 : false,
             IndicatorBad:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.id == lecture.subject_id)
+                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
               ].ratio > 10
                 ? true
                 : false,
@@ -86,7 +86,7 @@ onMounted(() => {
             >نسبة الغياب
             {{
               absenceRatio[
-                absenceRatio.findIndex((item) => item.id == lecture.subject_id)
+                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
               ].ratio
             }}%
           </span>
@@ -96,13 +96,13 @@ onMounted(() => {
           :class="{
             IndicatorGood:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.id == lecture.subject_id)
+                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
               ].ratio < 5
                 ? true
                 : false,
             IndicatorBad:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.id == lecture.subject_id)
+                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
               ].ratio > 10
                 ? true
                 : false,

@@ -33,22 +33,20 @@ const login = async () => {
     error = 401 ? (hint.value = true) : (hint.value = false);
   }
 
-  console.log(user.Data);
-  if (user.userAuth) {
-    switch (user.Role) {
-      case "student":
-        router.push("home");
-        break;
-      case "teacher":
-        router.push("/teacher/home");
-        break;
-      case "admin":
-        router.push("/admin/home");
-        break;
+  console.log(user.Role);
+  switch (user.Role) {
+    case "student":
+      router.push("/home");
+      break;
+    case "teacher":
+      router.push("/teacher/home");
+      break;
+    case "admin":
+      router.push("/admin/home");
+      break;
 
-      default:
-        break;
-    }
+    default:
+      break;
   }
 };
 </script>

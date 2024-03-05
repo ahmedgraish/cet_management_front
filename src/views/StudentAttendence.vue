@@ -9,7 +9,7 @@ import { onMounted, ref } from "vue";
 
 const studentNav = [
   { name: 1, icon: scheduleIcon, route: "/teacher/home" },
-  { name: 2, icon: marksIcon, route: "" },
+  { name: 2, icon: marksIcon, route: "/teacher/subjects" },
   { name: 3, icon: settingsIcon, route: "" },
 ];
 

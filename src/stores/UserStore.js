@@ -1,4 +1,5 @@
 import {defineStore} from "pinia"
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import CetApi from '../Repository/CetApi'
 
 
@@ -31,5 +32,6 @@ export const useUserStore = defineStore('UserStore',{
             }
         },
     },
+    persist: true,
 
 })
