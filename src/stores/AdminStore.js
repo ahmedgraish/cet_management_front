@@ -4,14 +4,14 @@ import AdminRepository from "../Repository/admin";
 import { useLocalStorage } from "@vueuse/core";
 
 export const useAdminStore = defineStore("AdminStore", {
-  state: () => {
-    Data:useLocalStorage("adminInfo", {});
-    isAuthenticated:false;
-    schedule: null;
-    absenceRatio: null;
-    grades: null;
-    isLoading: false;
-  },
+  state: () => ({
+    Data: useLocalStorage("adminInfo", {}),
+    isAuthenticated: false,
+    schedule: null,
+    absenceRatio: null,
+    grades: null,
+    isLoading: false,
+  }),
   actions: {
     /*
         Creates a new student with the given information.
@@ -34,10 +34,10 @@ export const useAdminStore = defineStore("AdminStore", {
           this.isAuthenticated = true;
         }
       } catch (error) {
-        throw error.response.status
-      }finally{
-        this.isLoading =false
-    }
+        throw error.response.status;
+      } finally {
+        this.isLoading = false;
+      }
     },
     async createStudent(data) {
       try {
