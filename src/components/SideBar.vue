@@ -7,7 +7,7 @@ import settingsIcon from "../components/icons/IconSittings.vue";
 import { ref } from "vue";
 import router from "@/router";
 
-defineProps(["Items", "startOn"]);
+defineProps(["Items"]);
 const activeNav = ref(1);
 </script>
 
@@ -25,23 +25,6 @@ const activeNav = ref(1);
     >
       <component :is="item.icon" :color="activeNav == item.name ? '#4494D0' : '#fff'" />
     </div>
-
-    <!-- 
-        <div class="navBtns" :class="{ 'activeNav': activeNav == 1 ? true : false }" @click="activeNav = 1">
-            <scheduleIcon :color="activeNav == 1 ? '#4494D0' : '#fff'" />
-        </div>
-
-        <div class="navBtns" :class="{ 'activeNav': activeNav == 2 ? true : false }" @click="activeNav = 2">
-            <percentageIcon :color="activeNav == 2 ? '#4494D0' : '#fff'" />
-        </div>
-
-        <div class="navBtns" :class="{ 'activeNav': activeNav == 3 ? true : false }" @click="activeNav = 3">
-            <marksIcon :color="activeNav == 3 ? '#4494D0' : '#fff'" />
-        </div>
-
-        <div class="navBtns" :class="{ 'activeNav': activeNav == 4 ? true : false }" @click="activeNav = 4">
-            <settingsIcon :color="activeNav == 4 ? '#4494D0' : '#fff'" />
-        </div> -->
   </nav>
 </template>
 

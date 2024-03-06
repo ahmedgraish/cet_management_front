@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import LoginView from '../views/LoginMainView.vue'
-import { useUserStore } from '@/stores/UserStore';
-
+import { createRouter, createWebHistory } from "vue-router";
+import LoginView from "../views/LoginMainView.vue";
+import { useStudentStore } from "@/stores/StudentStore";
+import { useTeacherStore } from "@/stores/TeacherStore";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,25 +13,25 @@ const router = createRouter({
       
     },
     {
-      path: '/teacher',
-      name: 'teacherLogin',
-      component: LoginView
+      path: "/teacher",
+      name: "teacherLogin",
+      component: LoginView,
     },
     {
-      path: '/admin',
-      name: 'adminLogin',
-      component: LoginView
+      path: "/admin",
+      name: "adminLogin",
+      component: LoginView,
     },
     {
       path: '/home',
       name: 'home',
       component: () => import('../views/StudentHome.vue'),
       beforeEnter: (to, from, next) => {
-      const user =useUserStore();
+        const student = useStudentStore()
         if ((
           from.path === '/' ||
           from.path === '/absenceRatio' ||
-          from.path === '/grades') && user.userAuth) {
+          from.path === '/grades') && student.isAuthenticated) {
           next();
         } else {
           next('/');
@@ -68,13 +68,13 @@ const router = createRouter({
       name: 'teacherHome',
       component: () => import('../views/TeacherHome.vue'),
       beforeEnter: (to, from, next) => {
-        const user =useUserStore();
+        const teacher = useTeacherStore()
         if ((
           from.path === '/teacher' ||
           from.path === '/teacher/attendence'||
           from.path === '/teacher/subjects' ||
           from.path === '/teacher/grades')
-           && user.userAuth) {
+           && teacher.isAuthenticated) {
           next();
         } else {
           next('/teacher');
@@ -118,14 +118,30 @@ const router = createRouter({
       },
     },
     {
-      path: '/admin/home',
-      name: 'adminHome',
+      path: "/admin/home",
+      name: "adminHome",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AdminHome.vue')
+      component: () => import("../views/AdminHome.vue"),
     },
-  ]
-})
+    {
+      path: "/admin/create-student",
+      name: "adminCreateStudent",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/Admin/CreateStudent.vue"),
+    },
+    {
+      path: "/admin/create-teacher",
+      name: "adminCreateTeacher",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/Admin/CreateTeacher.vue"),
+    },
+  ],
+});
 
-export default router
+export default router;

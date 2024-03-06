@@ -4,7 +4,6 @@ import scheduleIcon from "../components/icons/IconSchedule.vue";
 import percentageIcon from "../components/icons/IconPercentage.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import headercom from "@/components/header.vue";
 import AbsenceRatioBunner from "@/components/AbsenceRatioBunner.vue";
@@ -19,7 +18,6 @@ const studentNav = [
 ];
 
 const student = useStudentStore();
-const user = useUserStore();
 
 onMounted(() => {});
 </script>
@@ -30,7 +28,7 @@ onMounted(() => {});
       <headercom />
 
       <main>
-        <AbsenceRatioBunner :studentId="user.Data.id" />
+        <AbsenceRatioBunner :studentId="student.Data.id" />
       </main>
     </div>
 

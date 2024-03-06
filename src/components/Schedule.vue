@@ -1,19 +1,17 @@
 <script setup>
-import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import { onMounted, ref } from "vue";
 
-const user = useUserStore();
 const student = useStudentStore();
-const welcomeMsg = ref("💫" + " مرحبا  " + user.Data.name);
+const welcomeMsg = ref("💫" + " مرحبا  " + student.Data.name);
 
 const lectures = ref();
 const absenceRatio = ref();
 
 async function draw() {
   try {
-    await student.getAbsenceRatio(user.Data.id);
-    await student.getSchedule(user.Data.id);
+    await student.getAbsenceRatio(student.Data.id);
+    await student.getSchedule(student.Data.id);
   } catch (error) {
     console.log(error);
   }

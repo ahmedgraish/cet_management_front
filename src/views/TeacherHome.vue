@@ -5,10 +5,10 @@ import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
 import LectureCard from "@/components/LectureCard.vue";
 import headercom from "@/components/header.vue";
-import { useUserStore } from "../stores/UserStore";
 import { useLectureStore } from "@/stores/LectureStore";
 import { onMounted, ref } from "vue";
 import router from "@/router";
+import { useTeacherStore } from "@/stores/TeacherStore";
 
 const studentNav = [
   { name: 1, icon: scheduleIcon, route: "/teacher/home" },
@@ -16,7 +16,7 @@ const studentNav = [
   { name: 3, icon: settingsIcon, route: "" },
 ];
 
-const user = useUserStore();
+const teacher = useTeacherStore();
 const lecture = useLectureStore();
 
 async function handleClickedLecture(data) {
@@ -33,7 +33,7 @@ onMounted(() => {});
       <headercom />
       <main>
         <LectureCard
-          :teacherId="user.Data.id"
+          :teacherId="teacher.Data.id"
           @clickedLecture="(n) => handleClickedLecture(n)"
         />
       </main>

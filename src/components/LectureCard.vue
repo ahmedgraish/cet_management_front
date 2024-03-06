@@ -1,5 +1,4 @@
 <script setup>
-import { useUserStore } from "../stores/UserStore";
 import { useTeacherStore } from "@/stores/TeacherStore";
 import studentsIcon from "@/components/icons/Iconstudents.vue";
 import { onMounted, ref, defineProps } from "vue";

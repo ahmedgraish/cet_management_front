@@ -3,27 +3,29 @@ import Api from './Api'
 
 export default {
 
-  userLogin(data, role) {
-    if (role.includes('teacher')) {
-      return Api().post('/api/teacher/login', data)
-        .then((res) => {
-          return res
-        })
-
-    } else if (role.includes('admin')) {
-      return Api().post('/api/admin/login', data)
-        .then((res) => {
-          return res
-        })
-
-    } else {
-      return Api().post('/api/student/login', data)
-        .then((res) => {
-          return res
-        })
-    }
+  studentLogin(data) {
+    return Api().post('/api/student/login', data)
+      .then((res) => {
+        return res
+      })
   },
 
+  teacherLogin(data) {
+
+    return Api().post('/api/teacher/login', data)
+      .then((res) => {
+        return res
+      })
+  },
+
+  admnLogin(data) {
+
+    return Api().post('/api/admin/login', data)
+      .then((res) => {
+        return res
+      })
+
+  },
   studentSchedule(id) {
     return Api().get('/api/student/Schedules/' + id)
       .then((res) => {
@@ -44,41 +46,41 @@ export default {
         return res
       })
   },
-  teacherLectures(id){
-    return Api().get('/api/teacher/lectures/'+id)
-    .then((res)=>{
+  teacherLectures(id) {
+    return Api().get('/api/teacher/lectures/' + id)
+      .then((res) => {
         return res
-    })
+      })
   },
-  lectureStudents(id){
-    return Api().get('/api/teacher/lectureStudents/'+id)
-    .then((res)=>{
-      return res
-    })
-  },
-  attendenceSubmition(data){
-    return Api().post('/api/teacher/attendence',data)
-    .then((res)=>{
-      return res
-    })
-  },
-  teacherSubjects(id){
-    return Api().get('/api/teacher/teacherSubjects/'+id)
-    .then((res)=>{
+  lectureStudents(id) {
+    return Api().get('/api/teacher/lectureStudents/' + id)
+      .then((res) => {
         return res
-    })
+      })
   },
-  subjectStudents(id){
-    return Api().get('/api/teacher/subjectStudents/'+id)
-    .then((res)=>{
-      return res
-    })
+  attendenceSubmition(data) {
+    return Api().post('/api/teacher/attendence', data)
+      .then((res) => {
+        return res
+      })
   },
-  gradesSubmition(data){
-    return Api().post('/api/teacher/addingStudentGrades',data)
-    .then((res)=>{
-      return res
-    })
+  teacherSubjects(id) {
+    return Api().get('/api/teacher/teacherSubjects/' + id)
+      .then((res) => {
+        return res
+      })
+  },
+  subjectStudents(id) {
+    return Api().get('/api/teacher/subjectStudents/' + id)
+      .then((res) => {
+        return res
+      })
+  },
+  gradesSubmition(data) {
+    return Api().post('/api/teacher/addingStudentGrades', data)
+      .then((res) => {
+        return res
+      })
   },
 
 }

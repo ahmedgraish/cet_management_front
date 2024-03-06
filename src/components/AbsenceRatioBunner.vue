@@ -1,10 +1,8 @@
 <script setup>
-import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import { onMounted, ref } from "vue";
 
 const student = useStudentStore();
-const user = useUserStore();
 
 const props = defineProps({
   studentId: Number,

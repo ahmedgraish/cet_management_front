@@ -4,7 +4,6 @@ import scheduleIcon from "../components/icons/IconSchedule.vue";
 import percentageIcon from "../components/icons/IconPercentage.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import headercom from "@/components/header.vue";
 import gradesBunner from "@/components/gradesBunner.vue";
@@ -17,7 +16,7 @@ const studentNav = [
   { name: 4, icon: settingsIcon, route: "" },
 ];
 
-const user = useUserStore();
+const student = useStudentStore();
 
 onMounted(() => {});
 </script>
@@ -25,10 +24,10 @@ onMounted(() => {});
 <template>
   <div class="mainContainer">
     <div class="body">
-      <headercom @click="test" />
+      <headercom />
 
       <main>
-        <gradesBunner :studentId="user.Data.id" />
+        <gradesBunner :studentId="student.Data.id" />
       </main>
     </div>
 

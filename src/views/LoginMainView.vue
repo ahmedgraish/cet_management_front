@@ -4,13 +4,17 @@ import { ref } from "vue";
 import { useUserStore } from "../stores/UserStore";
 import router from "@/router";
 import loading from "@/components/LoadingScreen.vue";
+import { useStudentStore } from "@/stores/StudentStore";
+import { useAdminStore } from "@/stores/AdminStore";
+import { useTeacherStore } from "@/stores/TeacherStore";
 
 const welcomeMsg = ref("مرحبًا بك   في نظام الحضور والغياب ");
 const password = ref("");
 const ref_number = ref("");
-const role = ref("");
 const hint = ref(false);
-const user = useUserStore();
+const student = useStudentStore();
+const admin = useAdminStore();
+const teacher = useTeacherStore();
 
 const login = async () => {
   const loginData = {
@@ -19,41 +23,36 @@ const login = async () => {
   };
 
   if (document.URL.includes("admin")) {
-    role.value = "admin";
+    try {
+      await admin.login(loginData);
+      admin.isAuthenticated ? router.push("/admin/home") : null;
+    } catch (error) {
+      error = 401 ? (hint.value = true) : (hint.value = false);
+      console.log(error);
+    }
   } else if (document.URL.includes("teacher")) {
-    role.value = "teacher";
+    try {
+      await teacher.login(loginData);
+      teacher.isAuthenticated ? router.push("/teacher/home") : null;
+    } catch (error) {
+      error = 401 ? (hint.value = true) : (hint.value = false);
+      console.log(error);
+    }
   } else {
-    role.value = "student";
-  }
-
-  try {
-    await user.login(loginData, role.value);
-  } catch (error) {
-    console.log(error);
-    error = 401 ? (hint.value = true) : (hint.value = false);
-  }
-
-  console.log(user.Role);
-  switch (user.Role) {
-    case "student":
-      router.push("/home");
-      break;
-    case "teacher":
-      router.push("/teacher/home");
-      break;
-    case "admin":
-      router.push("/admin/home");
-      break;
-
-    default:
-      break;
+    try {
+      await student.login(loginData);
+      student.isAuthenticated ? router.push("/home") : null;
+    } catch (error) {
+      error = 401 ? (hint.value = true) : (hint.value = false);
+      console.log(error);
+    }
   }
 };
 </script>
 
 <template>
   <div class="mainCont">
-    <loading v-if="user.isLoading" />
+    <loading v-if="student.isLoading || admin.isLoading || teacher.isLoading" />
     <div class="side_part">
       <div class="logo"></div>
 

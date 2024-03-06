@@ -3,10 +3,7 @@ import sideBar from "../components/SideBar.vue";
 import scheduleIcon from "../components/icons/IconSchedule.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import SubjectCard from "@/components/SubjectCard.vue";
 import headercom from "@/components/header.vue";
-import { useUserStore } from "../stores/UserStore";
-import { useSubjectStore } from "@/stores/SubjectStore";
 import { onMounted, ref } from "vue";
 import gradesForm from "@/components/gradesForm.vue";
 

@@ -1,12 +1,10 @@
 <script setup>
 import showMoreIcon from "../components/icons/IconShowMore.vue";
 import showLessIcon from "../components/icons/IconShowLess.vue";
-import { useUserStore } from "../stores/UserStore";
 import { useStudentStore } from "@/stores/StudentStore";
 import { onMounted, ref, defineProps } from "vue";
 
 const student = useStudentStore();
-const user = useUserStore();
 
 const props = defineProps({
   studentId: Number,

@@ -5,10 +5,10 @@ import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
 import SubjectCard from "@/components/SubjectCard.vue";
 import headercom from "@/components/header.vue";
-import { useUserStore } from "../stores/UserStore";
 import { useSubjectStore } from "@/stores/SubjectStore";
 import router from "@/router";
 import { onMounted, ref } from "vue";
+import { useTeacherStore } from "@/stores/TeacherStore";
 
 const studentNav = [
   { name: 2, icon: scheduleIcon, route: "/teacher/home" },
@@ -16,7 +16,7 @@ const studentNav = [
   { name: 3, icon: settingsIcon, route: "" },
 ];
 
-const user = useUserStore();
+const teacher = useTeacherStore();
 const subject = useSubjectStore();
 
 async function handleClickedSubject(id) {
@@ -34,7 +34,7 @@ onMounted(() => {});
       <headercom />
       <main>
         <SubjectCard
-          :teacherId="user.Data.id"
+          :teacherId="teacher.Data.id"
           @clickedSubject="(n) => handleClickedSubject(n)"
         />
       </main>

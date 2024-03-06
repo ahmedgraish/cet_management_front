@@ -4,12 +4,9 @@ import scheduleIcon from "../components/icons/IconSchedule.vue";
 import percentageIcon from "../components/icons/IconPercentage.vue";
 import marksIcon from "../components/icons/IconMarks.vue";
 import settingsIcon from "../components/icons/IconSittings.vue";
-import { useUserStore } from "../stores/UserStore";
-import { useStudentStore } from "@/stores/StudentStore";
 import headercom from "@/components/header.vue";
 import schedule from "@/components/Schedule.vue";
 import { onMounted, ref } from "vue";
-import router from "@/router";
 
 const studentNav = [
   { name: 1, icon: scheduleIcon, route: "/home" },

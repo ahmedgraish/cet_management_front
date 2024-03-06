@@ -1,8 +1,19 @@
 <script setup>
 import { useUserStore } from "@/stores/UserStore";
 import arrowDownIcon from "../components/icons/IconArrowDown.vue";
+import { useTeacherStore } from "@/stores/TeacherStore";
+import { useAdminStore } from "@/stores/AdminStore";
+import { useStudentStore } from "@/stores/StudentStore";
 
-const user = useUserStore();
+let user = null;
+
+if (document.URL.includes("teacher")) {
+  user = useTeacherStore();
+} else if (document.URL.includes("admin")) {
+  user = useAdminStore();
+} else {
+  user = useStudentStore();
+}
 </script>
 
 <template>
