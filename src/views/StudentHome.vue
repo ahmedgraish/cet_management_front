@@ -7,6 +7,7 @@ import settingsIcon from "../components/icons/IconSittings.vue";
 import headercom from "@/components/header.vue";
 import schedule from "@/components/Schedule.vue";
 import { onMounted, ref } from "vue";
+import { useStudentStore } from "@/stores/StudentStore";
 
 const studentNav = [
   { name: 1, icon: scheduleIcon, route: "/home" },
@@ -15,6 +16,7 @@ const studentNav = [
   { name: 4, icon: settingsIcon, route: "" },
 ];
 
+const student = useStudentStore();
 onMounted(() => {});
 </script>
 

@@ -1,29 +1,27 @@
-<template>
-  <div :class="twMerge('relative', props.containerClasses)">
-    <div class="absolute inset-y-0 end-0 flex items-center pe-3.5">
-      <slot name="postfix"></slot>
-    </div>
-    <input
-
-      dir="rtl"
-      v-bind="attrs"
-      :class="
-        twMerge(
-          'border border-gray-300 text-gray-900 text-md rounded-full focus:ring-1 focus:ring-primary focus:border-primary block w-full p-2.5',
-          props.inputClasses
-        )
-      "
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge'
-import { useAttrs } from 'vue'
+import { useAttrs } from "vue";
 type Props = {
-  inputClasses?: string
-  containerClasses?: string
-}
-const props = defineProps<Props>()
-const attrs = useAttrs()
+  inputClasses?: string;
+  containerClasses?: string;
+};
+const props = defineProps<Props>();
+const attrs = useAttrs();
 </script>
+
+<template>
+  <input dir="rtl" v-bind="attrs" class="input" />
+</template>
+<style scoped>
+.input {
+  height: 30%;
+  width: 100%;
+  padding: 0 25px 0 15px;
+  border-radius: 50px;
+  border: 1px solid #9e9e9e;
+  background-color: #dadada02;
+  outline: none;
+  transition: all 0.2s ease;
+  font-size: large;
+  font-family: "El Messiri", sans-serif;
+}
+</style>

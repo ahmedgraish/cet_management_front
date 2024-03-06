@@ -173,7 +173,6 @@ computed(() => {});
   width: 100%;
   padding-bottom: 2%;
   padding-top: 2%;
-  margin-top: 4%;
   background-color: var(--vt-c-white-mute);
   border-radius: 20px 20px 0 0;
 }

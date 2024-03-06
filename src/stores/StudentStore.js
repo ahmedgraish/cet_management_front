@@ -5,7 +5,8 @@ import { useLocalStorage } from "@vueuse/core";
 
 export const useStudentStore = defineStore('StudentStore', {
     state: () => {
-        Data: useLocalStorage("studentInfo", {});
+        // Data: useLocalStorage("studentData", {});
+        Data: JSON.parse(localStorage.getItem("studentData")) || {}; // Initialize with local storage data or an empty object
         isAuthenticated:false;
         schedule: null;
         absenceRatio: null;
@@ -19,7 +20,7 @@ export const useStudentStore = defineStore('StudentStore', {
                 this.isLoading = true;
                 const response = await CetApi.studentLogin(data);
                 this.Data = response.data;
-
+                localStorage.setItem('studentData', JSON.stringify(response.data));
                 if (response.status == 200) {
                     this.isAuthenticated = true;
                 }
