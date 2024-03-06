@@ -1,68 +1,62 @@
-import { defineStore } from "pinia"
-import CetApi from '../Repository/CetApi'
+import { defineStore } from "pinia";
+import CetApi from "../Repository/CetApi";
 import { useLocalStorage } from "@vueuse/core";
 
+export const useStudentStore = defineStore("StudentStore", {
+  state: () => ({
+    Data: useLocalStorage("studentInfo", {}),
+    isAuthenticated: false,
+    schedule: null,
+    absenceRatio: null,
+    grades: null,
+    isLoading: false,
+  }),
+  actions: {
+    async login(data) {
+      try {
+        this.isLoading = true;
+        const response = await CetApi.studentLogin(data);
+        this.Data = response.data;
 
-export const useStudentStore = defineStore('StudentStore', {
-    state: () => {
-        // Data: useLocalStorage("studentData", {});
-        Data: JSON.parse(localStorage.getItem("studentData")) || {}; // Initialize with local storage data or an empty object
-        isAuthenticated:false;
-        schedule: null;
-        absenceRatio: null;
-        grades: null;
-        isLoading: false;
+        this.isAuthenticated = true;
+      } catch (error) {
+        throw error.response.status;
+      } finally {
+        this.isLoading = false;
+      }
     },
-    actions: {
-
-        async login(data) {
-            try {
-                this.isLoading = true;
-                const response = await CetApi.studentLogin(data);
-                this.Data = response.data;
-                localStorage.setItem('studentData', JSON.stringify(response.data));
-                if (response.status == 200) {
-                    this.isAuthenticated = true;
-                }
-            } catch (error) {
-                throw error.response.status
-            }finally{
-                this.isLoading =false
-            }
-        },
-        async getSchedule(id) {
-            try {
-                this.isLoading = true
-                const response = await CetApi.studentSchedule(id)
-                this.schedule = response.data
-            } catch (error) {
-                throw error
-            } finally {
-                this.isLoading = false
-            }
-        },
-        async getAbsenceRatio(id) {
-            try {
-                this.loading = true;
-                const response = await CetApi.absenseRatio(id);
-                this.absenceRatio = response.data;
-            } catch (error) {
-                throw error;
-            } finally {
-                this.loading = false;
-            }
-        },
-        async getGrades(id) {
-            try {
-                this.loading = true;
-                const response = await CetApi.studentGrades(id);
-                this.grades = response.data;
-            } catch (error) {
-                throw error;
-            } finally {
-                this.loading = false;
-            }
-        },
+    async getSchedule(id) {
+      try {
+        this.isLoading = true;
+        const response = await CetApi.studentSchedule(id);
+        this.schedule = response.data;
+      } catch (error) {
+        throw error;
+      } finally {
+        this.isLoading = false;
+      }
     },
-
-})
+    async getAbsenceRatio(id) {
+      try {
+        this.loading = true;
+        const response = await CetApi.absenseRatio(id);
+        this.absenceRatio = response.data;
+      } catch (error) {
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+    async getGrades(id) {
+      try {
+        this.loading = true;
+        const response = await CetApi.studentGrades(id);
+        this.grades = response.data;
+      } catch (error) {
+        throw error;
+      } finally {
+        this.loading = false;
+      }
+    },
+  },
+});
