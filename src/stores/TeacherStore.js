@@ -3,13 +3,13 @@ import CetApi from "../Repository/CetApi";
 import { useLocalStorage } from "@vueuse/core";
 
 export const useTeacherStore = defineStore("TeacherStore", {
-  state: () => {
-    Data: useLocalStorage("teacherInfo", {});
-    lectures: null;
-    subjects: null;
-    isLoading: false;
-    isAuthenticated: false;
-  },
+  state: () => ({
+    Data: useLocalStorage("teacherInfo", {}),
+    lectures: null,
+    subjects: null,
+    isLoading: false,
+    isAuthenticated: false,
+  }),
   actions: {
     async login(data) {
       try {
@@ -21,10 +21,10 @@ export const useTeacherStore = defineStore("TeacherStore", {
           this.isAuthenticated = true;
         }
       } catch (error) {
-        throw error.response.status
-      }finally{
-        this.isLoading =false
-    }
+        throw error.response.status;
+      } finally {
+        this.isLoading = false;
+      }
     },
     async getLectures(id) {
       try {
@@ -39,14 +39,14 @@ export const useTeacherStore = defineStore("TeacherStore", {
     },
     async getSubjects(id) {
       try {
-        this.isLoading = true
-        const response = await CetApi.teacherSubjects(id)
-        this.subjects = response.data
+        this.isLoading = true;
+        const response = await CetApi.teacherSubjects(id);
+        this.subjects = response.data;
       } catch (error) {
-        throw error
+        throw error;
       } finally {
-        this.isLoading = false
+        this.isLoading = false;
       }
-    }
+    },
   },
-})
+});
