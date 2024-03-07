@@ -10,8 +10,8 @@ export const useStudentStore = defineStore("StudentStore", {
     grades: null,
     isLoading: false,
   }),
-  getters() {
-    isAuthenticated: () => Boolean(this.Data.token);
+  getters:{
+    isAuthenticated: (state) => Boolean(state.Data.token),
   },
   actions: {
     async login(data) {
@@ -20,7 +20,6 @@ export const useStudentStore = defineStore("StudentStore", {
         const response = await CetApi.studentLogin(data);
         this.Data = response.data;
 
-        this.isAuthenticated = true;
       } catch (error) {
         throw error.response.status;
       } finally {
