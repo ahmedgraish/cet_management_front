@@ -16,8 +16,8 @@ import AddStudentIcon from "@/components/icons/IconAddStudent.vue";
 import AddTeacherIcon from "@/components/icons/IconAddTeacher.vue";
 import submitBtn from "@/components/SubmitBtn.vue";
 const studentNav = [
-  { name: 1, icon: AddTeacherIcon, route: "" },
-  { name: 2, icon: AddStudentIcon, route: "" },
+  { name: 1, icon: AddTeacherIcon, route: "/admin/create-teacher" },
+  { name: 2, icon: AddStudentIcon, route: "/admin/create-student" },
   { name: 3, icon: addLectureIcon, route: "" },
   { name: 4, icon: marksIcon, route: "" },
 ];
@@ -81,7 +81,7 @@ const isConfirmPasswordHidden = ref(true);
   <div class="mainContainer">
     <div class="body">
       <main>
-        <h1>إنشاء حساب استاذ</h1>
+        <h1 style="font-size: 3rem">إنشاء حساب استاذ</h1>
         <form @submit="onSubmit" :validation-schema="typedSchema" action="#" dir="rtl">
           <div class="inputMianContainer">
             <div class="inputContainer">
@@ -199,7 +199,7 @@ const isConfirmPasswordHidden = ref(true);
 .body {
   display: flex;
   position: relative;
-  align-items: end;
+  align-items: flex-end;
   height: 100%;
   width: 95%;
 }
@@ -232,9 +232,8 @@ form {
   width: 40%;
 }
 #submitBtn {
-  width: 30%;
-  height: 10%;
-  margin-bottom: -20%;
+  width: 20rem;
+  height: 4rem;
 }
 .hint {
   margin: 2% 2% 0 0;

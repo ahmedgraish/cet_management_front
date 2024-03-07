@@ -13,9 +13,10 @@ const attrs = useAttrs();
 </template>
 <style scoped>
 .input {
-  height: 30%;
+  height: 4rem;
   width: 100%;
   padding: 0 25px 0 15px;
+  margin-top: 1rem;
   border-radius: 50px;
   border: 1px solid #9e9e9e;
   background-color: #dadada02;
