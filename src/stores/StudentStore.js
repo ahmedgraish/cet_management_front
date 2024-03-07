@@ -5,12 +5,14 @@ import { useLocalStorage } from "@vueuse/core";
 export const useStudentStore = defineStore("StudentStore", {
   state: () => ({
     Data: useLocalStorage("studentInfo", {}),
-    isAuthenticated: false,
     schedule: null,
-    absenceRatio: null,
+    absenceRatio: useLocalStorage("absenceRatio", []),
     grades: null,
     isLoading: false,
   }),
+  getters() {
+    isAuthenticated: () => Boolean(this.Data.token);
+  },
   actions: {
     async login(data) {
       try {

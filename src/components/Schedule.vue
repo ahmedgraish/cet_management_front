@@ -2,21 +2,21 @@
 import { useStudentStore } from "@/stores/StudentStore";
 import { onMounted, ref } from "vue";
 
-const student = useStudentStore();
-const welcomeMsg = ref("💫" + " مرحبا  " + student.Data.name);
+const studentStore = useStudentStore();
+const welcomeMsg = ref("💫" + " مرحبا  " + studentStore.Data.name);
 
 const lectures = ref();
-const absenceRatio = ref();
+const absenceRatio = ref([]);
 
 async function draw() {
   try {
-    await student.getAbsenceRatio(student.Data.id);
-    await student.getSchedule(student.Data.id);
+    await studentStore.getAbsenceRatio(studentStore.Data.id);
+    await studentStore.getSchedule(studentStore.Data.id);
   } catch (error) {
     console.log(error);
   }
-  absenceRatio.value = student.absenceRatio;
-  lectures.value = student.schedule;
+  absenceRatio.value = studentStore.absenceRatio;
+  lectures.value = studentStore.schedule;
 }
 
 onMounted(() => {
@@ -51,11 +51,14 @@ onMounted(() => {
       <h4>الاربعاء</h4>
       <h4>الخميس</h4>
 
+      <div v-if="studentStore.isLoading">loading...</div>
       <div
         class="lecture"
+        v-else-if="Array.isArray(studentStore.absenceRatio)"
         v-for="lecture in lectures"
         :style="{
-          'grid-column-start': parseFloat(lecture.start_time) - parseFloat('06:00'),
+          'grid-column-start':
+            parseFloat(lecture.start_time) - parseFloat('06:00'),
           'grid-column-end': parseFloat(lecture.end_time) - parseFloat('06:00'),
           'grid-row-start': lecture.day_of_week + 1,
         }"
@@ -65,14 +68,18 @@ onMounted(() => {
           :class="{
             IndicatorGood:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
-              ].ratio < 5
+                absenceRatio.findIndex(
+                  (item) => item.subject_id == lecture.subject_id
+                )
+              ]?.ratio < 5
                 ? true
                 : false,
             IndicatorBad:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
-              ].ratio > 10
+                absenceRatio.findIndex(
+                  (item) => item.subject_id == lecture.subject_id
+                )
+              ]?.ratio > 10
                 ? true
                 : false,
           }"
@@ -84,8 +91,10 @@ onMounted(() => {
             >نسبة الغياب
             {{
               absenceRatio[
-                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
-              ].ratio
+                absenceRatio.findIndex(
+                  (item) => item.subject_id == lecture.subject_id
+                )
+              ]?.ratio
             }}%
           </span>
         </div>
@@ -94,19 +103,24 @@ onMounted(() => {
           :class="{
             IndicatorGood:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
-              ].ratio < 5
+                absenceRatio.findIndex(
+                  (item) => item.subject_id == lecture.subject_id
+                )
+              ]?.ratio < 5
                 ? true
                 : false,
             IndicatorBad:
               absenceRatio[
-                absenceRatio.findIndex((item) => item.subject_id == lecture.subject_id)
-              ].ratio > 10
+                absenceRatio.findIndex(
+                  (item) => item.subject_id == lecture.subject_id
+                )
+              ]?.ratio > 10
                 ? true
                 : false,
           }"
         ></span>
       </div>
+      <div v-else>حدث خطا</div>
     </div>
   </div>
 </template>
